@@ -13,6 +13,8 @@ resolvers ++= Seq("snapshots"     at "http://oss.sonatype.org/content/repositori
 
 seq(com.github.siasia.WebPlugin.webSettings :_*)
 
+port in container.Configuration := 8888
+
 unmanagedResourceDirectories in Test <+= (baseDirectory) { _ / "src/main/webapp" }
 
 scalacOptions ++= Seq("-deprecation", "-unchecked")
