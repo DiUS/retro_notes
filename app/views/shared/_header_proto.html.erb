@@ -1,0 +1,41 @@
+<% # This is the APP HEADER %>
+<nav class="top-bar">
+  <ul class="title-area">
+    <!-- Title Area -->
+    <li class="name">
+      <h1><%= link_to "Project ABC V1.0", page_home_path %></h1>
+    </li>
+    <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+    <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+  </ul>
+
+  <section class="top-bar-section">
+    <!-- Left Nav Section -->
+    <%= render_navigation(:context => :main, :level => 1) %>
+
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <li>
+        <a><i class="icon-plus-sign icon-2x"></i></a>
+      </li>
+      <li>
+        <a><i class="icon-cog icon-2x"></i></a>
+      </li>
+      <li class="has-dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-ellipsis-vertical icon-2x"></i></a>
+          <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">Projects <b class="caret"></b></a> -->
+          <ul class="dropdown">
+            <li>
+              <a href="#">Company 1 - Some project</a>
+              <a href="#">Organisation 1 - Another project</a>
+            </li>
+          </ul>
+
+      </li>
+      <li class="divider show-for-small"></li>
+    </ul>
+  </section>
+</nav>
+<div class="row">
+  <%= render_navigation :context => :main, :renderer => :breadcrumbs, :join_with => " &raquo; ", :id => 'breadcrumbs', :class => 'breadcrumbs' %>
+</div>

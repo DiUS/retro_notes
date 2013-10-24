@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<%= render :partial => 'shared/admin/head' %>
+</head>
+<body>
+	<%= render 'shared/admin/header' %>
+
+	<%= render :partial => 'shared/flash_message' %>
+
+	<div class="container">
+		<%= yield %>
+	</div>
+
+</body>
+</html>

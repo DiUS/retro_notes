@@ -1,0 +1,11 @@
+//.row { @include grid-row;
+//  & section { @include grid-column(12);
+//  	margin-bottom: 20px;
+//  }
+//}
+
+section.main-section { @include outer-container;
+  $max-width: 100%;
+  margin-left: $edge-gutter;
+  margin-right: $edge-gutter;
+}

@@ -1,0 +1,942 @@
+/*!
+ *  Font Awesome 3.1.0 - Custom modification for Vodafone
+ *  -------------------------------------------------------
+ *  The full suite of pictographic icons, examples, and documentation
+ *  can be found at: http://fontawesome.io
+ *
+ *  License
+ *  -------------------------------------------------------
+ *  - The Font Awesome font is licensed under the SIL Open Font License v1.1 -
+ *    http://scripts.sil.org/OFL
+ *  - Font Awesome CSS, LESS, and SASS files are licensed under the MIT License -
+ *    http://opensource.org/licenses/mit-license.html
+ *  - Font Awesome documentation licensed under CC BY 3.0 License -
+ *    http://creativecommons.org/licenses/by/3.0/
+ *  - Attribution is no longer required in Font Awesome 3.0, but much appreciated:
+ *    "Font Awesome by Dave Gandy - http://fontawesome.io"
+
+ *  Contact
+ *  -------------------------------------------------------
+ *  Email: dave@fontawesome.io
+ *  Twitter: http://twitter.com/fortaweso_me
+ *  Work: Lead Product Designer @ http://kyruus.com
+ */
+/* FONT PATH
+ * -------------------------- */
+@font-face {
+  font-family: 'FontAwesome';
+  src: font-url('fontawesome-webfont.eot?v=3.1.0');
+  src: font-url('fontawesome-webfont.eot?#iefix&v=3.1.0') format('embedded-opentype'), font-url('fontawesome-webfont.woff?v=3.1.0') format('woff'), font-url('fontawesome-webfont.ttf?v=3.1.0') format('truetype'), font-url('fontawesome-webfont.svg#fontawesomeregular?v=3.1.0') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
+   readers do not read off random characters that represent icons */
+@mixin font-icon-glass {
+  content: "\f000";
+}
+@mixin font-icon-music {
+  content: "\f001";
+}
+@mixin font-icon-search {
+  content: "\f002";
+}
+@mixin font-icon-envelope {
+  content: "\f003";
+}
+@mixin font-icon-heart {
+  content: "\f004";
+}
+@mixin font-icon-star {
+  content: "\f005";
+}
+@mixin font-icon-star-empty {
+  content: "\f006";
+}
+@mixin font-icon-user {
+  content: "\f007";
+}
+@mixin font-icon-film {
+  content: "\f008";
+}
+@mixin font-icon-th-large {
+  content: "\f009";
+}
+@mixin font-icon-th {
+  content: "\f00a";
+}
+@mixin font-icon-th-list {
+  content: "\f00b";
+}
+@mixin font-icon-ok {
+  content: "\f00c";
+}
+@mixin font-icon-remove {
+  content: "\f00d";
+}
+@mixin font-icon-zoom-in {
+  content: "\f00e";
+}
+@mixin font-icon-zoom-out {
+  content: "\f010";
+}
+@mixin font-icon-off {
+  content: "\f011";
+}
+@mixin font-icon-signal {
+  content: "\f012";
+}
+@mixin font-icon-cog {
+  content: "\f013";
+}
+@mixin font-icon-trash {
+  content: "\f014";
+}
+@mixin font-icon-home {
+  content: "\f015";
+}
+@mixin font-icon-file {
+  content: "\f016";
+}
+@mixin font-icon-time {
+  content: "\f017";
+}
+@mixin font-icon-road {
+  content: "\f018";
+}
+@mixin font-icon-download-alt {
+  content: "\f019";
+}
+@mixin font-icon-download {
+  content: "\f01a";
+}
+@mixin font-icon-upload {
+  content: "\f01b";
+}
+@mixin font-icon-inbox {
+  content: "\f01c";
+}
+@mixin font-icon-play-circle {
+  content: "\f01d";
+}
+@mixin font-icon-rotate-right {
+  content: "\f01e";
+}
+/* F020 doesn't work in Safari. all shifted one down */
+@mixin font-icon-refresh {
+  content: "\f021";
+}
+@mixin font-icon-list-alt {
+  content: "\f022";
+}
+@mixin font-icon-lock {
+  content: "\f023";
+}
+@mixin font-icon-flag {
+  content: "\f024";
+}
+@mixin font-icon-headphones {
+  content: "\f025";
+}
+@mixin font-icon-volume-off {
+  content: "\f026";
+}
+@mixin font-icon-volume-down {
+  content: "\f027";
+}
+@mixin font-icon-volume-up {
+  content: "\f028";
+}
+@mixin font-icon-qrcode {
+  content: "\f029";
+}
+@mixin font-icon-barcode {
+  content: "\f02a";
+}
+@mixin font-icon-tag {
+  content: "\f02b";
+}
+@mixin font-icon-tags {
+  content: "\f02c";
+}
+@mixin font-icon-book {
+  content: "\f02d";
+}
+@mixin font-icon-bookmark {
+  content: "\f02e";
+}
+@mixin font-icon-print {
+  content: "\f02f";
+}
+@mixin font-icon-camera {
+  content: "\f030";
+}
+@mixin font-icon-font {
+  content: "\f031";
+}
+@mixin font-icon-bold {
+  content: "\f032";
+}
+@mixin font-icon-italic {
+  content: "\f033";
+}
+@mixin font-icon-text-height {
+  content: "\f034";
+}
+@mixin font-icon-text-width {
+  content: "\f035";
+}
+@mixin font-icon-align-left {
+  content: "\f036";
+}
+@mixin font-icon-align-center {
+  content: "\f037";
+}
+@mixin font-icon-align-right {
+  content: "\f038";
+}
+@mixin font-icon-align-justify {
+  content: "\f039";
+}
+@mixin font-icon-list {
+  content: "\f03a";
+}
+@mixin font-icon-indent-left {
+  content: "\f03b";
+}
+@mixin font-icon-indent-right {
+  content: "\f03c";
+}
+@mixin font-icon-facetime-video {
+  content: "\f03d";
+}
+@mixin font-icon-picture {
+  content: "\f03e";
+}
+@mixin font-icon-pencil {
+  content: "\f040";
+}
+@mixin font-icon-map-marker {
+  content: "\f041";
+}
+@mixin font-icon-adjust {
+  content: "\f042";
+}
+@mixin font-icon-tint {
+  content: "\f043";
+}
+@mixin font-icon-edit {
+  content: "\f044";
+}
+@mixin font-icon-share {
+  content: "\f045";
+}
+@mixin font-icon-check {
+  content: "\f046";
+}
+@mixin font-icon-move {
+  content: "\f047";
+}
+@mixin font-icon-step-backward {
+  content: "\f048";
+}
+@mixin font-icon-fast-backward {
+  content: "\f049";
+}
+@mixin font-icon-backward {
+  content: "\f04a";
+}
+@mixin font-icon-play {
+  content: "\f04b";
+}
+@mixin font-icon-pause {
+  content: "\f04c";
+}
+@mixin font-icon-stop {
+  content: "\f04d";
+}
+@mixin font-icon-forward {
+  content: "\f04e";
+}
+@mixin font-icon-fast-forward {
+  content: "\f050";
+}
+@mixin font-icon-step-forward {
+  content: "\f051";
+}
+@mixin font-icon-eject {
+  content: "\f052";
+}
+@mixin font-icon-chevron-left {
+  content: "\f053";
+}
+@mixin font-icon-chevron-right {
+  content: "\f054";
+}
+@mixin font-icon-plus-sign {
+  content: "\f055";
+}
+@mixin font-icon-minus-sign {
+  content: "\f056";
+}
+@mixin font-icon-remove-sign {
+  content: "\f057";
+}
+@mixin font-icon-ok-sign {
+  content: "\f058";
+}
+@mixin font-icon-question-sign {
+  content: "\f059";
+}
+@mixin font-icon-info-sign {
+  content: "\f05a";
+}
+@mixin font-icon-screenshot {
+  content: "\f05b";
+}
+@mixin font-icon-remove-circle {
+  content: "\f05c";
+}
+@mixin font-icon-ok-circle {
+  content: "\f05d";
+}
+@mixin font-icon-ban-circle {
+  content: "\f05e";
+}
+@mixin font-icon-arrow-left {
+  content: "\f060";
+}
+@mixin font-icon-arrow-right {
+  content: "\f061";
+}
+@mixin font-icon-arrow-up {
+  content: "\f062";
+}
+@mixin font-icon-arrow-down {
+  content: "\f063";
+}
+@mixin font-icon-mail-forward {
+  content: "\f064";
+}
+@mixin font-icon-resize-full {
+  content: "\f065";
+}
+@mixin font-icon-resize-small {
+  content: "\f066";
+}
+@mixin font-icon-plus {
+  content: "\f067";
+}
+@mixin font-icon-minus {
+  content: "\f068";
+}
+@mixin font-icon-asterisk {
+  content: "\f069";
+}
+@mixin font-icon-exclamation-sign {
+  content: "\f06a";
+}
+@mixin font-icon-gift {
+  content: "\f06b";
+}
+@mixin font-icon-leaf {
+  content: "\f06c";
+}
+@mixin font-icon-fire {
+  content: "\f06d";
+}
+@mixin font-icon-eye-open {
+  content: "\f06e";
+}
+@mixin font-icon-eye-close {
+  content: "\f070";
+}
+@mixin font-icon-warning-sign {
+  content: "\f071";
+}
+@mixin font-icon-plane {
+  content: "\f072";
+}
+@mixin font-icon-calendar {
+  content: "\f073";
+}
+@mixin font-icon-random {
+  content: "\f074";
+}
+@mixin font-icon-comment {
+  content: "\f075";
+}
+@mixin font-icon-magnet {
+  content: "\f076";
+}
+@mixin font-icon-chevron-up {
+  content: "\f077";
+}
+@mixin font-icon-chevron-down {
+  content: "\f078";
+}
+@mixin font-icon-retweet {
+  content: "\f079";
+}
+@mixin font-icon-shopping-cart {
+  content: "\f07a";
+}
+@mixin font-icon-folder-close {
+  content: "\f07b";
+}
+@mixin font-icon-folder-open {
+  content: "\f07c";
+}
+@mixin font-icon-resize-vertical {
+  content: "\f07d";
+}
+@mixin font-icon-resize-horizontal {
+  content: "\f07e";
+}
+@mixin font-icon-bar-chart {
+  content: "\f080";
+}
+@mixin font-icon-twitter-sign {
+  content: "\f081";
+}
+@mixin font-icon-facebook-sign {
+  content: "\f082";
+}
+@mixin font-icon-camera-retro {
+  content: "\f083";
+}
+@mixin font-icon-key {
+  content: "\f084";
+}
+@mixin font-icon-cogs {
+  content: "\f085";
+}
+@mixin font-icon-comments {
+  content: "\f086";
+}
+@mixin font-icon-thumbs-up {
+  content: "\f087";
+}
+@mixin font-icon-thumbs-down {
+  content: "\f088";
+}
+@mixin font-icon-star-half {
+  content: "\f089";
+}
+@mixin font-icon-heart-empty {
+  content: "\f08a";
+}
+@mixin font-icon-signout {
+  content: "\f08b";
+}
+@mixin font-icon-linkedin-sign {
+  content: "\f08c";
+}
+@mixin font-icon-pushpin {
+  content: "\f08d";
+}
+@mixin font-icon-external-link {
+  content: "\f08e";
+}
+@mixin font-icon-signin {
+  content: "\f090";
+}
+@mixin font-icon-trophy {
+  content: "\f091";
+}
+@mixin font-icon-github-sign {
+  content: "\f092";
+}
+@mixin font-icon-upload-alt {
+  content: "\f093";
+}
+@mixin font-icon-lemon {
+  content: "\f094";
+}
+@mixin font-icon-phone {
+  content: "\f095";
+}
+@mixin font-icon-check-empty {
+  content: "\f096";
+}
+@mixin font-icon-bookmark-empty {
+  content: "\f097";
+}
+@mixin font-icon-phone-sign {
+  content: "\f098";
+}
+@mixin font-icon-twitter {
+  content: "\f099";
+}
+@mixin font-icon-facebook {
+  content: "\f09a";
+}
+@mixin font-icon-github {
+  content: "\f09b";
+}
+@mixin font-icon-unlock {
+  content: "\f09c";
+}
+@mixin font-icon-credit-card {
+  content: "\f09d";
+}
+@mixin font-icon-rss {
+  content: "\f09e";
+}
+@mixin font-icon-hdd {
+  content: "\f0a0";
+}
+@mixin font-icon-bullhorn {
+  content: "\f0a1";
+}
+@mixin font-icon-bell {
+  content: "\f0a2";
+}
+@mixin font-icon-certificate {
+  content: "\f0a3";
+}
+@mixin font-icon-hand-right {
+  content: "\f0a4";
+}
+@mixin font-icon-hand-left {
+  content: "\f0a5";
+}
+@mixin font-icon-hand-up {
+  content: "\f0a6";
+}
+@mixin font-icon-hand-down {
+  content: "\f0a7";
+}
+@mixin font-icon-circle-arrow-left {
+  content: "\f0a8";
+}
+@mixin font-icon-circle-arrow-right {
+  content: "\f0a9";
+}
+@mixin font-icon-circle-arrow-up {
+  content: "\f0aa";
+}
+@mixin font-icon-circle-arrow-down {
+  content: "\f0ab";
+}
+@mixin font-icon-globe {
+  content: "\f0ac";
+}
+@mixin font-icon-wrench {
+  content: "\f0ad";
+}
+@mixin font-icon-tasks {
+  content: "\f0ae";
+}
+@mixin font-icon-filter {
+  content: "\f0b0";
+}
+@mixin font-icon-briefcase {
+  content: "\f0b1";
+}
+@mixin font-icon-fullscreen {
+  content: "\f0b2";
+}
+@mixin font-icon-group {
+  content: "\f0c0";
+}
+@mixin font-icon-link {
+  content: "\f0c1";
+}
+@mixin font-icon-cloud {
+  content: "\f0c2";
+}
+@mixin font-icon-beaker {
+  content: "\f0c3";
+}
+@mixin font-icon-cut {
+  content: "\f0c4";
+}
+@mixin font-icon-copy {
+  content: "\f0c5";
+}
+@mixin font-icon-paper-clip {
+  content: "\f0c6";
+}
+@mixin font-icon-save {
+  content: "\f0c7";
+}
+@mixin font-icon-sign-blank {
+  content: "\f0c8";
+}
+@mixin font-icon-reorder {
+  content: "\f0c9";
+}
+@mixin font-icon-list-ul {
+  content: "\f0ca";
+}
+@mixin font-icon-list-ol {
+  content: "\f0cb";
+}
+@mixin font-icon-strikethrough {
+  content: "\f0cc";
+}
+@mixin font-icon-underline {
+  content: "\f0cd";
+}
+@mixin font-icon-table {
+  content: "\f0ce";
+}
+@mixin font-icon-magic {
+  content: "\f0d0";
+}
+@mixin font-icon-truck {
+  content: "\f0d1";
+}
+@mixin font-icon-pinterest {
+  content: "\f0d2";
+}
+@mixin font-icon-pinterest-sign {
+  content: "\f0d3";
+}
+@mixin font-icon-google-plus-sign {
+  content: "\f0d4";
+}
+@mixin font-icon-google-plus {
+  content: "\f0d5";
+}
+@mixin font-icon-money {
+  content: "\f0d6";
+}
+@mixin font-icon-caret-down {
+  content: "\f0d7";
+}
+@mixin font-icon-caret-up {
+  content: "\f0d8";
+}
+@mixin font-icon-caret-left {
+  content: "\f0d9";
+}
+@mixin font-icon-caret-right {
+  content: "\f0da";
+}
+@mixin font-icon-columns {
+  content: "\f0db";
+}
+@mixin font-icon-sort {
+  content: "\f0dc";
+}
+@mixin font-icon-sort-down {
+  content: "\f0dd";
+}
+@mixin font-icon-sort-up {
+  content: "\f0de";
+}
+@mixin font-icon-envelope-alt {
+  content: "\f0e0";
+}
+@mixin font-icon-linkedin {
+  content: "\f0e1";
+}
+@mixin font-icon-rotate-left {
+  content: "\f0e2";
+}
+@mixin font-icon-legal {
+  content: "\f0e3";
+}
+@mixin font-icon-dashboard {
+  content: "\f0e4";
+}
+@mixin font-icon-comment-alt {
+  content: "\f0e5";
+}
+@mixin font-icon-comments-alt {
+  content: "\f0e6";
+}
+@mixin font-icon-bolt {
+  content: "\f0e7";
+}
+@mixin font-icon-sitemap {
+  content: "\f0e8";
+}
+@mixin font-icon-umbrella {
+  content: "\f0e9";
+}
+@mixin font-icon-paste {
+  content: "\f0ea";
+}
+@mixin font-icon-lightbulb {
+  content: "\f0eb";
+}
+@mixin font-icon-exchange {
+  content: "\f0ec";
+}
+@mixin font-icon-cloud-download {
+  content: "\f0ed";
+}
+@mixin font-icon-cloud-upload {
+  content: "\f0ee";
+}
+@mixin font-icon-user-md {
+  content: "\f0f0";
+}
+@mixin font-icon-stethoscope {
+  content: "\f0f1";
+}
+@mixin font-icon-suitcase {
+  content: "\f0f2";
+}
+@mixin font-icon-bell-alt {
+  content: "\f0f3";
+}
+@mixin font-icon-coffee {
+  content: "\f0f4";
+}
+@mixin font-icon-food {
+  content: "\f0f5";
+}
+@mixin font-icon-file-alt {
+  content: "\f0f6";
+}
+@mixin font-icon-building {
+  content: "\f0f7";
+}
+@mixin font-icon-hospital {
+  content: "\f0f8";
+}
+@mixin font-icon-ambulance {
+  content: "\f0f9";
+}
+@mixin font-icon-medkit {
+  content: "\f0fa";
+}
+@mixin font-icon-fighter-jet {
+  content: "\f0fb";
+}
+@mixin font-icon-beer {
+  content: "\f0fc";
+}
+@mixin font-icon-h-sign {
+  content: "\f0fd";
+}
+@mixin font-icon-plus-sign-alt {
+  content: "\f0fe";
+}
+@mixin font-icon-double-angle-left {
+  content: "\f100";
+}
+@mixin font-icon-double-angle-right {
+  content: "\f101";
+}
+@mixin font-icon-double-angle-up {
+  content: "\f102";
+}
+@mixin font-icon-double-angle-down {
+  content: "\f103";
+}
+@mixin font-icon-angle-left {
+  content: "\f104";
+}
+@mixin font-icon-angle-right {
+  content: "\f105";
+}
+@mixin font-icon-angle-up {
+  content: "\f106";
+}
+@mixin font-icon-angle-down {
+  content: "\f107";
+}
+@mixin font-icon-desktop {
+  content: "\f108";
+}
+@mixin font-icon-laptop {
+  content: "\f109";
+}
+@mixin font-icon-tablet {
+  content: "\f10a";
+}
+@mixin font-icon-mobile-phone {
+  content: "\f10b";
+}
+@mixin font-icon-circle-blank {
+  content: "\f10c";
+}
+@mixin font-icon-quote-left {
+  content: "\f10d";
+}
+@mixin font-icon-quote-right {
+  content: "\f10e";
+}
+@mixin font-icon-spinner {
+  content: "\f110";
+}
+@mixin font-icon-circle {
+  content: "\f111";
+}
+@mixin font-icon-mail-reply {
+  content: "\f112";
+}
+@mixin font-icon-folder-close-alt {
+  content: "\f114";
+}
+@mixin font-icon-folder-open-alt {
+  content: "\f115";
+}
+@mixin font-icon-expand-alt {
+  content: "\f116";
+}
+@mixin font-icon-collapse-alt {
+  content: "\f117";
+}
+@mixin font-icon-smile {
+  content: "\f118";
+}
+@mixin font-icon-frown {
+  content: "\f119";
+}
+@mixin font-icon-meh {
+  content: "\f11a";
+}
+@mixin font-icon-gamepad {
+  content: "\f11b";
+}
+@mixin font-icon-keyboard {
+  content: "\f11c";
+}
+@mixin font-icon-flag-alt {
+  content: "\f11d";
+}
+@mixin font-icon-flag-checkered {
+  content: "\f11e";
+}
+@mixin font-icon-terminal {
+  content: "\f120";
+}
+@mixin font-icon-code {
+  content: "\f121";
+}
+@mixin font-icon-reply-all {
+  content: "\f122";
+}
+@mixin font-icon-mail-reply-all {
+  content: "\f122";
+}
+@mixin font-icon-star-half-empty {
+  content: "\f123";
+}
+@mixin font-icon-location-arrow {
+  content: "\f124";
+}
+@mixin font-icon-crop {
+  content: "\f125";
+}
+@mixin font-icon-code-fork {
+  content: "\f126";
+}
+@mixin font-icon-unlink {
+  content: "\f127";
+}
+@mixin font-icon-question {
+  content: "\f128";
+}
+@mixin font-icon-info {
+  content: "\f129";
+}
+@mixin font-icon-exclamation {
+  content: "\f12a";
+}
+@mixin font-icon-superscript {
+  content: "\f12b";
+}
+@mixin font-icon-subscript {
+  content: "\f12c";
+}
+@mixin font-icon-eraser {
+  content: "\f12d";
+}
+@mixin font-icon-puzzle-piece {
+  content: "\f12e";
+}
+@mixin font-icon-microphone {
+  content: "\f130";
+}
+@mixin font-icon-microphone-off {
+  content: "\f131";
+}
+@mixin font-icon-shield {
+  content: "\f132";
+}
+@mixin font-icon-calendar-empty {
+  content: "\f133";
+}
+@mixin font-icon-fire-extinguisher {
+  content: "\f134";
+}
+@mixin font-icon-rocket {
+  content: "\f135";
+}
+@mixin font-icon-maxcdn {
+  content: "\f136";
+}
+@mixin font-icon-chevron-sign-left {
+  content: "\f137";
+}
+@mixin font-icon-chevron-sign-right {
+  content: "\f138";
+}
+@mixin font-icon-chevron-sign-up {
+  content: "\f139";
+}
+@mixin font-icon-chevron-sign-down {
+  content: "\f13a";
+}
+@mixin font-icon-html5 {
+  content: "\f13b";
+}
+@mixin font-icon-css3 {
+  content: "\f13c";
+}
+@mixin font-icon-anchor {
+  content: "\f13d";
+}
+@mixin font-icon-unlock-alt {
+  content: "\f13e";
+}
+@mixin font-icon-bullseye {
+  content: "\f140";
+}
+@mixin font-icon-ellipsis-horizontal {
+  content: "\f141";
+}
+@mixin font-icon-ellipsis-vertical {
+  content: "\f142";
+}
+@mixin font-icon-rss-sign {
+  content: "\f143";
+}
+@mixin font-icon-play-sign {
+  content: "\f144";
+}
+@mixin font-icon-ticket {
+  content: "\f145";
+}
+@mixin font-icon-minus-sign-alt {
+  content: "\f146";
+}
+@mixin font-icon-check-minus {
+  content: "\f147";
+}
+@mixin font-icon-level-up {
+  content: "\f148";
+}
+@mixin font-icon-level-down {
+  content: "\f149";
+}
+@mixin font-icon-check-sign {
+  content: "\f14a";
+}
+@mixin font-icon-edit-sign {
+  content: "\f14b";
+}
+@mixin font-icon-external-link-sign {
+  content: "\f14c";
+}
+@mixin font-icon-share-sign {
+  content: "\f14d";
+}

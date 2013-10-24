@@ -1,0 +1,14 @@
+<section class="main-section">
+  <h1>{{feedback_session.title}}</h1>
+
+  <div ng-repeat="retro_reflection in feedback_session.retro_reflections" class="item-column">
+    <h1 ng-bind="retro_reflection.title" class="item-column__heading"></h1>
+    <ul class="item-column__items">
+      <li ng-repeat="retro_response in retro_reflection.retro_responses" ng-bind="retro_response.content" class="item-column__item"></li>
+    </ul>
+  </div>
+</section>
+
+<a href="/projects/{{project._id}}/feedback_sessions/{{feedback_session._id}}/response/new" class="button">Add thought</a>
+
+<div ui-view="form"></div>

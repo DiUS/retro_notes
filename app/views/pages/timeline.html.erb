@@ -1,0 +1,227 @@
+<style type="text/css">
+.styleguide section{
+  margin: 20px;
+}
+</style>
+
+<!-- <section class="main-section">
+    <h1>Your project</h1>
+</section> -->
+    <script type="text/javascript">
+        var timeline;
+        var data;
+
+        // Called when the Visualization API is loaded.
+        function drawVisualization() {
+            // Create a JSON data table
+            data = [
+                {
+                    'start': new Date(2013,4,23),
+                    'content': $('#event1').html(),
+                    'className': 'milestone'
+                },
+                {
+                    'start': new Date(2013,4,23,23,0,0),
+                    'content': $('#event2').html(),
+                    'className': 'fyi'
+                },
+                {
+                    'start': new Date(2013,4,24,23,0,0),
+                    'content': $('#event2').html(),
+                    'className': 'fyi'
+                },
+                {
+                    'start': new Date(2013,4,24,16,0,0),
+                    'content': $('#event3').html(),
+                    'className': 'fyi'
+                },
+                {
+                    'start': new Date(2013,4,22),
+                    'content': $('#event5').html(),
+                    'className': 'fyi'
+                },
+                {
+                    'start': new Date(2013,4,20,23,0,0),
+                    'content': $('#event4').html(),
+                    'className': 'fyi'
+                },
+                {
+                    'start': new Date(2013,4,21,23,0,0),
+                    'content': $('#event2').html(),
+                    'className': 'fyi'
+                },
+                {
+                    'start': new Date(2013,4,20,16,0,0),
+                    'content': $('#event3').html(),
+                    'className': 'milestone'
+                },
+                {
+                    'start': new Date(2013,4,18,16,0,0),
+                    'content': $('#event3').html(),
+                    'className': 'fyi'
+                },
+                {
+                    'start': new Date(2013,4,17),
+                    'content': $('#event5').html(),
+                    'className': 'fyi'
+                },
+                {
+                    'start': new Date(2013,4,17,23,0,0),
+                    'content': $('#event4').html(),
+                    'className': 'fyi'
+                },
+                {
+                    'start': new Date(2013,4,16,23,0,0),
+                    'content': $('#event2').html(),
+                    'className': 'fyi'
+                },
+                {
+                    'start': new Date(2013,4,15,16,0,0),
+                    'content': $('#event3').html(),
+                    'className': 'fyi   '
+                },
+                {
+                    'start': new Date(2013,4,15,16,0,0),
+                    'content': $('#event2').html(),
+                    'className': 'fyi'
+                },
+                {
+                    'start': new Date(2013,4,13,16,0,0),
+                    'content': $('#event3').html(),
+                    'className': 'fyi'
+                },
+                {
+                    'start': new Date(2013,4,12,23,0,0),
+                    'content': $('#event4').html(),
+                    'className': 'fyi'
+                },
+                {
+                    'start': new Date(2013,4,11,23,0,0),
+                    'content': $('#event2').html(),
+                    'className': 'fyi'
+                },
+                {
+                    'start': new Date(2013,4,11,16,0,0),
+                    'content': $('#event1').html(),
+                    'className': 'milestone'
+                }
+            ];
+
+            // specify options
+            var options = {
+                'width':  '100%',
+                'height': 'auto',
+                'minHeight': 500,
+                'editable': true,   // enable dragging and editing events
+                'style': 'box',
+                animate: true,
+                start: new Date(2013,4,23),
+                end: new Date(2013,4,24,16,0,0),
+                // scale: links.Timeline.StepDate.SCALE.DAY,
+                // step: 7,
+                eventMarginAxis: 30,
+                eventMargin: 10,
+                zoomMax: 31536000000/24, // Year / x months
+                axisOnTop: true,
+                zoomMin: 604800000/3.5, //7 days
+                // showCurrentTime: true,
+                groupsOnRight: true,
+                box:{
+                  align: 'center'
+                }
+            };
+
+            // Instantiate our timeline object.
+            timeline = new links.Timeline(document.getElementById('mytimeline'));
+
+            function onRangeChanged(properties) {
+                // document.getElementById('info').innerHTML += 'rangechanged ' +
+                //         properties.start + ' - ' + properties.end + '<br>';
+            }
+
+            // attach an event listener using the links events handler
+            links.events.addListener(timeline, 'rangechanged', onRangeChanged);
+
+            // Draw our timeline with the created data and options
+            timeline.draw(data, options);
+        }
+
+        function reload(){
+            data.push(                {
+                    'start': new Date(2013,4,23),
+                    'content': 'New event test'
+                })
+          timeline.redraw();
+        }
+        $(function(){
+          drawVisualization();
+          $('#ham').click(function(){
+            reload()
+          })
+
+
+          $('body').scrollspy({
+            min: function(){
+                return $('#mytimeline').offset().top;
+            },
+            max: function(){
+                return $('body').height();
+            },
+            onEnter: function(element, position) {
+              $('.timeline-axis-text,.timeline-event-dot,.timeline-axis').css('position', 'fixed');
+              timeline.state.timelineAxisFixed = true;
+            },
+            onLeave: function(element, position) {
+              $('.timeline-axis-text,.timeline-event-dot,.timeline-axis').css('position', 'absolute');
+              timeline.state.timelineAxisFixed = false;
+            }
+          });
+        });
+    </script>
+    <script type="text/tmpl" id="event1">
+        <aside class="timeline-image"><img src="/nepal.jpg"/></aside>
+        <hgroup>
+          <a href="#"><img data-tooltip title="Sonny Mai" src="/sonny_small.jpg" class="timeline-avatar"></a>
+          <h1>Launched version 1.0</h1>
+          <time class="timeline-event-date">2 days ago</time>
+        </hgroup>
+        <p>Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
+    </script>
+    <script type="text/tmpl" id="event2">
+        <hgroup>
+          <a href="#"><img data-tooltip title="Sonny Mai" src="/sonny_totoro.jpg" class="timeline-avatar"></a>
+          <h1>We got a new team member</h1>
+          <time class="timeline-event-date">2 days ago</time>
+        </hgroup>
+        <p>Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula.</p>
+    </script>
+
+
+    <script type="text/tmpl" id="event3">
+        <hgroup>
+          <a href="#"><img data-tooltip title="Sonny Mai" src="/sonny_totoro.jpg" class="timeline-avatar"></a>
+          <h1>Short milestone!</h1>
+          <time class="timeline-event-date">2 days ago</time>
+        </hgroup>
+        <p>We did it!</p>
+    </script>
+    <script type="text/tmpl" id="event4">
+        <hgroup>
+          <a href="#"><img data-tooltip title="Sonny Mai" src="/sonny_totoro.jpg" class="timeline-avatar"></a>
+          <h1>Something happened today</h1>
+          <time class="timeline-event-date">2 days ago</time>
+        </hgroup>
+        <p>Proin quis tortor orci. Etiam at risus et justo dignissim congue.</p>
+    </script>
+    <script type="text/tmpl" id="event5">
+        <aside class="timeline-image"><img src="/screen.png"/></aside>
+        <hgroup>
+          <a href="#"><img data-tooltip title="Sonny Mai" src="/sonny_small.jpg" class="timeline-avatar"></a>
+          <h1>A teaser screenshot</h1>
+          <time class="timeline-event-date">2 days ago</time>
+        </hgroup>
+        <p>Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta. Sed!</p>
+    </script>
+
+
+<div id="mytimeline" class="timeline-container minimal-timeline timeline-theme-blackcurrant"></div>

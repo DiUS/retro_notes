@@ -1,0 +1,9 @@
+<h1 ng-bind="project.title"></h1>
+
+Sessions
+<span ng-repeat="feedback_session in feedback_sessions">
+  <a ng-href="/projects/{{project._id}}/feedback_sessions/{{feedback_session._id}}" ng-bind="feedback_session.title"></a>
+  <br>
+</span>
+
+<a href="/projects/{{project._id}}/feedback_sessions/new">Add session</a>

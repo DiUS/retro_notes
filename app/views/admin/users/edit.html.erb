@@ -1,0 +1,17 @@
+<%= simple_form_for(@user,
+    :action => 'form-stacked multi-step',
+    :url => admin_user_path(@user),
+    :method => 'put' ) do |f|  %>
+  <%= f.error_notification %>
+
+  <%= f.input :email %>
+  <%= f.input :roles_mask,
+  	:collection => User.roles_hash,
+  	:prompt => "Select a role",
+  	:label => "Role", :required => true %>
+
+  <div class="actions">
+    <%= f.button :submit, :class => 'btn btn-success' %>
+    <%= link_to 'Cancel', admin_users_path %>
+  </div>
+<% end %>
