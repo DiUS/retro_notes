@@ -11,14 +11,10 @@ object Project extends Project with LongKeyedMetaMapper[Project] with Loggable {
   private implicit val formats = net.liftweb.json.DefaultFormats
 
   def createFromJson(in: JsonAST.JValue): Option[Project] = {
-    logger.warn(s"create: ${in.toString}")
-
-    (in \ "title").extractOpt[String] match {
+    in.extractOpt[ProjectTitle] match {
       case None => None
-      case Some(title) => {
-        val project = Project.create
-        project.title(title)
-        Some(project)
+      case Some(projectTitle) => {
+        Some(Project.create.title(projectTitle.title))
       }
     }
   }
@@ -32,8 +28,11 @@ object Project extends Project with LongKeyedMetaMapper[Project] with Loggable {
     }
   }
 
-  implicit def toJson(item: Project): JValue = Extraction.decompose(item)
-  implicit def toJson(items: List[Project]): JValue = Extraction.decompose(items)
+  implicit def toJson(item: Project): JValue = Extraction.decompose(ProjectTitle(item.title))
+  implicit def toJson(items: List[Project]): JValue = {
+    val titles = items.map((p:Project) => ProjectTitle(p.title))
+    Extraction.decompose(titles)
+  }
 
 }
 
@@ -47,3 +46,4 @@ class Project extends LongKeyedMapper[Project] with IdPK with OneToMany[Long, Pr
 
 }
 
+case class ProjectTitle(title: String)

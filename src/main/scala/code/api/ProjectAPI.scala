@@ -19,7 +19,7 @@ object ProjectAPI extends RestHelper with Loggable {
     case "project" :: Nil JsonGet _ => Project.findAll() : JValue
     case "project" :: Nil JsonPost json -> _ => {
       logger.warn("json: " + json)
-      Project.createFromJson(json).map { p => p.save(); p: JValue }
+      Project.createFromJson(json).map { p => p.saveMe(): JValue }
     }
     case "project" :: Project(project) :: Nil JsonGet _ => project: JValue
   }
