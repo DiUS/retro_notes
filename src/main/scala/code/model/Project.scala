@@ -13,7 +13,6 @@ class Project extends LongKeyedMapper[Project] with IdPK {
 
   def getSingleton = Project
 
-  object dateCreated extends MappedDateTime(this)
-  object name extends MappedString(this, 256)
+  object title extends MappedString(this, 256)
 
 }
