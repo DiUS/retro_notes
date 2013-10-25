@@ -3,14 +3,16 @@ package code.model
 import net.liftweb.mapper._
 import net.liftweb.json.{JsonAST, JValue, Extraction}
 import net.liftweb.util.Helpers
-import net.liftweb.common.{Empty, Box}
+import net.liftweb.common.{Loggable, Empty, Box}
 
-object Project extends Project with LongKeyedMetaMapper[Project] {
+object Project extends Project with LongKeyedMetaMapper[Project] with Loggable {
 
   override def dbTableName = "project"
   private implicit val formats = net.liftweb.json.DefaultFormats
 
   def createFromJson(in: JsonAST.JValue): Option[Project] = {
+    logger.warn(s"create: ${in.toString}")
+
     (in \ "title").extractOpt[String] match {
       case None => None
       case Some(title) => {
