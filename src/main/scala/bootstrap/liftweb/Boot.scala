@@ -10,6 +10,7 @@ import js.jquery.JQueryArtifacts
 import sitemap._
 import Loc._
 import mapper._
+import code.api._
 
 import code.model._
 import net.liftmodules.JQueryModule
@@ -40,6 +41,12 @@ class Boot {
 
     // where to search snippet
     LiftRules.addToPackages("code")
+
+
+    // REST Api classes
+    LiftRules.statelessDispatch.append(ProjectAPI)
+
+
 
     // Build SiteMap
     def sitemap = SiteMap(
