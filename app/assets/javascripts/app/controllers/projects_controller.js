@@ -3,7 +3,7 @@ app.controller("ProjectsController", function ($scope, $http, $location, $state,
   $scope.project = {};
   if ($state.current.name === 'default.projects') {
     Project.query({}, function (response) {
-      return $scope.projects = response;
+      $scope.projects = response;
     }, function (response) {
     });
   }
@@ -11,26 +11,26 @@ app.controller("ProjectsController", function ($scope, $http, $location, $state,
     Project.get({
       id: $stateParams['project_id']
     }, function (response) {
-      return $scope.project = response;
+      $scope.project = response;
     }, function (response) {
-      return $state.transitionTo('default.projects');
+      $state.transitionTo('default.projects');
     });
     ProjectRetro.query({
       project_id: $stateParams['project_id']
     }, function (response) {
-      return $scope.retros = response.retros;
+      $scope.retros = response.retros;
     }, function (response) {
     });
     Page.setTitle('Show project');
   }
   $scope.create = function () {
-    return Project.save({}, {
+    Project.save({}, {
       project: {
         title: $scope.project.title,
         description: $scope.project.description
       }
     }, function (response) {
-      return $location.path("/projects");
+      $location.path("/projects");
     }, function (response) {
     });
   };
@@ -38,12 +38,12 @@ app.controller("ProjectsController", function ($scope, $http, $location, $state,
     Project.get({
       id: $stateParams['project_id']
     }, function (response) {
-      return $scope.project = response;
+      $scope.project = response;
     }, function (response) {
     });
   }
   $scope.update = function () {
-    return Project.update({
+    Project.update({
       id: $stateParams['project_id']
     }, {
       project: {
@@ -51,25 +51,21 @@ app.controller("ProjectsController", function ($scope, $http, $location, $state,
         description: $scope.project.description
       }
     }, function (response) {
-      return $location.path("/projects");
+      $location.path("/projects");
     }, function (response) {
     });
   };
-  return $scope.destroy = function (id) {
-    return Project["delete"]({
+  $scope.destroy = function (id) {
+    Project["delete"]({
       id: id
     }, function (response) {
-      var i, _results;
-
-      i = 0;
-      _results = [];
+      var i = 0;
       while (i < $scope.projects.length) {
         if ($scope.projects[i]['id'] === id) {
           $scope.projects.splice(i, 1);
         }
-        _results.push(i++);
+        i++;
       }
-      return _results;
     }, function (response) {
     });
   };

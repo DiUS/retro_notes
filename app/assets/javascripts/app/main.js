@@ -11,7 +11,7 @@ app.factory('Page', function () {
     },
     setTitle: function (newTitle) {
       document.title = newTitle + appended;
-      return title = newTitle + appended;
+      title = newTitle + appended;
     }
   };
 });

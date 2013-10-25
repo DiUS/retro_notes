@@ -12,13 +12,11 @@ app.factory("RetroService", function ($rootScope, RetroSession) {
   return {
     retro: {},
     get: function (retro_id) {
-      var self;
-
-      self = this;
-      return Retro.get({
+      var self = this;
+      Retro.get({
         id: retro_id
       }, function (response) {
-        return self.retro = response.retro;
+        self.retro = response.retro;
       });
     }
   };

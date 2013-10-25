@@ -1,6 +1,6 @@
 app.config(function ($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise("/");
-  return $stateProvider.state("default", {
+  $stateProvider.state("default", {
     abstract: true,
     views: {
       "": {

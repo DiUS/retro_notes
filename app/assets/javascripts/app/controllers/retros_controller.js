@@ -8,14 +8,14 @@ app.controller("RetrosController", function ($scope, $http, $location, $state, $
     Project.get({
       id: $stateParams['project_id']
     }, function (response) {
-      return $scope.project = response;
+      $scope.project = response;
     }, function (response) {
-      return console.log('error');
+      console.log('error');
     });
     Retro.query({
       project_id: $stateParams['project_id']
     }, function (response) {
-      return $scope.retros = response;
+      $scope.retros = response;
     }, function (response) {
     });
     Page.setTitle('New retro');
@@ -24,42 +24,40 @@ app.controller("RetrosController", function ($scope, $http, $location, $state, $
     Project.get({
       id: $stateParams['project_id']
     }, function (response) {
-      return $scope.project = response;
+      $scope.project = response;
     }, function (response) {
-      return console.log('error');
+      console.log('error');
     });
     Retro.get({
       id: $stateParams['retro_id']
     }, function (response) {
       $scope.retro = response.retro;
-      return Page.setTitle($scope.retro.title);
+      Page.setTitle($scope.retro.title);
     }, function (response) {
     });
     $scope.resolve_action = function (retro_action) {
-      return Action.update(retro_action, {
+      Action.update(retro_action, {
         action_id: retro_action._id,
         retro_action: retro_action
       });
     };
     (tick = function () {
-      return Retro.get({
+      Retro.get({
         id: $stateParams['retro_id']
       }, function (response) {
         $scope.retro = response.retro;
-        return $timeout(tick, 50000);
+        $timeout(tick, 50000);
       });
     })();
   }
-  return $scope.create = function () {
-    var form_data;
-
-    form_data = $scope.retro;
-    return Retro.save({
+  $scope.create = function () {
+    var form_data = $scope.retro;
+    Retro.save({
       project_id: $stateParams['project_id'],
       retro: form_data
     }, function (retro) {
       console.log('here');
-      return $location.path("/projects/" + $stateParams['project_id'] + "/retros/" + retro._id);
+      $location.path("/projects/" + $stateParams['project_id'] + "/retros/" + retro._id);
     }, function (response) {
     });
   };

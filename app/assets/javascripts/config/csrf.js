@@ -1,6 +1,4 @@
 app.config(function ($httpProvider) {
-  var authToken;
-
-  authToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-  return $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken;
+  var authToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+  $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken;
 });
