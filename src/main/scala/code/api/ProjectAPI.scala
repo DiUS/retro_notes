@@ -15,10 +15,10 @@ object ProjectAPI extends RestHelper {
   /*
     serve the list of available projects
    */
-  serve ( "retro" / "project" prefix {
-    case Nil JsonGet _ => Project.findAll() : JValue
-    case Project(project) :: Nil JsonGet _ => project: JValue
-  })
 
+  serve {
+    case "project" :: Nil JsonGet _ => Project.findAll() : JValue
+    case "project" :: Project(project) :: Nil JsonGet _ => project: JValue
+  }
 
 }
