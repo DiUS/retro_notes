@@ -13,7 +13,7 @@ object Project extends Project with LongKeyedMetaMapper[Project] {
   def createFromJson(in: JsonAST.JValue): Option[Project] = {
     (in \ "title").extractOpt[String] match {
       case None => None
-      case title => {
+      case Some(title) => {
         val project = Project.create
         project.title(title)
         Some(project)
