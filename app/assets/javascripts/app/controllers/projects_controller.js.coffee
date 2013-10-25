@@ -31,7 +31,7 @@ app.controller "ProjectsController", ($scope, $http, $location, $state, $statePa
 
       # Error
     , (response) ->
-      $location.path("/projects")
+      $state.transitionTo('default.projects')
 
     ProjectFeedbackSession.query(
       project_id: $stateParams['project_id']
