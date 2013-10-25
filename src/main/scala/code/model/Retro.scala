@@ -17,4 +17,5 @@ class Retro extends LongKeyedMapper[Retro] with IdPK with OneToMany[Long, Retro]
   object title extends MappedString(this, 256)
 
   object retroReflections extends MappedOneToMany(RetroReflection, RetroReflection.retro, OrderBy(RetroReflection.id, Ascending))
+  object actions extends MappedOneToMany(Action, Action.retro, OrderBy(Action.id, Ascending))
 }
