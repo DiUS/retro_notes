@@ -13,17 +13,13 @@ import scala.xml._
 object ProjectAPI extends RestHelper with Loggable {
 
   /*
-    serve the list of available projects
+    serve projects
    */
   serve {
     case "project" :: Nil JsonGet _ => Project.findAll() : JValue
-    case "project" :: Nil JsonPost json -> _ => {
-      logger.warn("json: " + json)
-      Project.createFromJson(json).map { p => p.saveMe(): JValue }
-    }
     case "project" :: Project(project) :: Nil JsonGet _ => project: JValue
+    case "project" :: Project(project) :: Nil JsonPut json -> _ => project.updateFromJson(json).map { p => p.saveMe(): JValue }
+    case "project" :: Nil JsonPost json -> _ => Project.createFromJson(json).map { p => p.saveMe(): JValue }
   }
-
-
 
 }

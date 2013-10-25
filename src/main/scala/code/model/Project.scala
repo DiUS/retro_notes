@@ -28,15 +28,16 @@ object Project extends Project with LongKeyedMetaMapper[Project] with Loggable {
     }
   }
 
-  implicit def toJson(item: Project): JValue = Extraction.decompose(ProjectTitle(item.title))
+  implicit def toJson(item: Project): JValue = Extraction.decompose(ProjectType(item.id.get, item.title.get))
   implicit def toJson(items: List[Project]): JValue = {
-    val titles = items.map((p:Project) => ProjectTitle(p.title))
+    val titles = items.map((p:Project) => ProjectType(p.id.get, p.title.get))
     Extraction.decompose(titles)
   }
 
 }
 
 class Project extends LongKeyedMapper[Project] with IdPK with OneToMany[Long, Project] {
+  private implicit val formats = net.liftweb.json.DefaultFormats
 
   def getSingleton = Project
 
@@ -44,6 +45,14 @@ class Project extends LongKeyedMapper[Project] with IdPK with OneToMany[Long, Pr
 
   object retros extends MappedOneToMany(Retro, Retro.project, OrderBy(Retro.id, Ascending))
 
+  def updateFromJson(in: JsonAST.JValue): Option[Project] = {
+    in.extractOpt[ProjectTitle] match {
+      case None => None
+      case Some(pt: ProjectTitle) => Some(title(pt.title))
+    }
+  }
+
 }
 
+case class ProjectType(id: Long, title: String)
 case class ProjectTitle(title: String)
