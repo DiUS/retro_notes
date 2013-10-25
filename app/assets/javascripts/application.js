@@ -34,7 +34,6 @@
 //= require foundation/foundation.topbar
 //= require jquery.scrollspy
 //= require common
-//= require app/app_routes
 //= require app/main
 //= require_tree ./app/controllers
 //= require_tree ./app/resources
