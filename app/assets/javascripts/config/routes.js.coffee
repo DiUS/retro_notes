@@ -50,45 +50,45 @@ app.config ($stateProvider, $urlRouterProvider) ->
     #       templateUrl: "/assets/projects/edit.html"
 
 
-    # Project Feedback Sessions
-    .state "default.projects.show.feedback_sessions", 
-      url: "/feedback_sessions",
+    # Project Retro Sessions
+    .state "default.projects.show.retros", 
+      url: "/retros",
       abstract: true
 
-    .state "default.projects.show.feedback_sessions.new",
+    .state "default.projects.show.retros.new",
       url: "/new"
       views:
         "@default":
-          controller: "ProjectFeedbackSessionsController"
-          templateUrl: "/assets/feedback_sessions/new.html"
+          controller: "RetrosController"
+          templateUrl: "/assets/retros/new.html"
 
-    # .state "default.projects.show.feedback_sessions.show",
+    # .state "default.projects.show.retros.show",
     #   url: "/:feedback_session_id"
     #   views:
     #     "@default":
-    #       controller: "ProjectFeedbackSessionsController"
-    #       templateUrl: "/assets/feedback_sessions/show.html"
+    #       controller: "RetroController"
+    #       templateUrl: "/assets/retros/show.html"
 
-    .state "default.projects.show.feedback_sessions.show",
-      url: "/:feedback_session_id"
+    .state "default.projects.show.retros.show",
+      url: "/:retro_id"
       views:
         "@default":
-          controller: "ProjectFeedbackSessionsController"
-          templateUrl: "/assets/feedback_sessions/show.html"
-        # "form@default.projects.show.feedback_sessions.show":
-        #   templateUrl: "/assets/feedback_sessions/_new_response_form.html"
+          controller: "RetrosController"
+          templateUrl: "/assets/retros/show.html"
+        # "form@default.projects.show.retros.show":
+        #   templateUrl: "/assets/retros/_new_response_form.html"
 
-    .state "default.projects.show.feedback_sessions.show.response",
+    .state "default.projects.show.retros.show.response",
       url: '/response'
       abstract: true
-    .state "default.projects.show.feedback_sessions.show.response.new",
+    .state "default.projects.show.retros.show.response.new",
       url: "/new"
       views:
         # "@default":
-        #   controller: "ProjectFeedbackSessionsController"
-        #   templateUrl: "/assets/feedback_sessions/show.html"
-        "form@default.projects.show.feedback_sessions.show":
-          templateUrl: "/assets/feedback_sessions/_new_response_form.html"
+        #   controller: "RetroController"
+        #   templateUrl: "/assets/retros/show.html"
+        "form@default.projects.show.retros.show":
+          templateUrl: "/assets/retros/_new_response_form.html"
           controller: "ResponsesController"
 
 

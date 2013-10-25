@@ -2,7 +2,7 @@ class Project
   include Mongoid::Document
   acts_as_api
 
-  has_many :feedback_sessions
+  has_many :retros
   has_many :sentiment_quizes
 
   attr_accessible :title

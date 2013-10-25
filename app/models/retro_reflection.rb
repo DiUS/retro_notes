@@ -2,7 +2,7 @@ class RetroReflection
   include Mongoid::Document
   acts_as_api
 
-  belongs_to :feedback_session
+  belongs_to :retro
   has_many :retro_responses
 
   attr_accessible :title

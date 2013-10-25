@@ -1,4 +1,4 @@
-app.controller "ProjectsController", ($scope, $http, $location, $state, $stateParams, Page, Project, ProjectFeedbackSession, FeedbackSession) ->
+app.controller "ProjectsController", ($scope, $http, $location, $state, $stateParams, Page, Project, ProjectRetro, Retro) ->
   # =========================================================================
   # Initialize
   # =========================================================================
@@ -33,13 +33,13 @@ app.controller "ProjectsController", ($scope, $http, $location, $state, $statePa
     , (response) ->
       $state.transitionTo('default.projects')
 
-    ProjectFeedbackSession.query(
+    Retro.query(
       project_id: $stateParams['project_id']
 
       # Success
     , (response) ->
       console.log(response)
-      $scope.feedback_sessions = response.feedback_sessions
+      $scope.retros = response.retros
 
       # Error
     , (response) ->

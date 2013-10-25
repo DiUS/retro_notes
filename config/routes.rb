@@ -10,21 +10,21 @@ LfdBootstrap::Application.routes.draw do
       resources :votes
     end
 
-    resources :feedback_sessions
+    resources :retros
 
     resources :projects do
-      match '/feedback_sessions' => 'project_feedback_sessions#index'
+      match '/retros' => 'project_retros#index'
     end
   end
 
   # Passthrough to frontend
-  match '/feedback_sessions' => 'pages#spa', :as => :feedback_sessions
-  match '/feedback_sessions/*page' => 'pages#spa'
+  match '/retros' => 'pages#spa', :as => :retros
+  match '/retros/*page' => 'pages#spa'
   match '/projects' => 'pages#spa', :as => :projects
   match '/projects/:id' => 'pages#spa', :as => :project
-  match '/projects/:id/feedback_sessions' => 'pages#spa', :as => :project_feedback_sessions
-  match '/projects/:id/feedback_sessions/new' => 'pages#spa', :as => :project_feedback_session_new
-  match '/projects/:id/feedback_sessions/:feedback_session_id' => 'pages#spa', :as => :project_feedback_session
+  match '/projects/:id/retros' => 'pages#spa', :as => :project_retros
+  match '/projects/:id/retros/new' => 'pages#spa', :as => :project_retro_new
+  match '/projects/:id/retros/:feedback_session_id' => 'pages#spa', :as => :project_retro
   match '/projects/*page' => 'pages#spa'
 
   # Users

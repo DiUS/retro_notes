@@ -1,4 +1,4 @@
-app.controller "ResponsesController", ($scope, $http, $location, $state, $stateParams, Page, FeedbackSession, RetroResponse) ->
+app.controller "ResponsesController", ($scope, $http, $location, $state, $stateParams, Page, Retro, RetroResponse) ->
   # =========================================================================
   # Initialize
   # =========================================================================
@@ -23,13 +23,13 @@ app.controller "ResponsesController", ($scope, $http, $location, $state, $stateP
 
       i = 0
       retro_response = response
-      while i < $scope.feedback_session.retro_reflections.length
-        if  $scope.feedback_session.retro_reflections[i]._id is retro_response.retro_reflection_id
-          $scope.feedback_session.retro_reflections[i].retro_responses.push retro_response
+      while i < $scope.retro.retro_reflections.length
+        if  $scope.retro.retro_reflections[i]._id is retro_response.retro_reflection_id
+          $scope.retro.retro_reflections[i].retro_responses.push retro_response
           break
         i++
 
-      $location.path "/projects/#{$stateParams['project_id']}/feedback_sessions/#{$scope.feedback_session._id}"
+      $location.path "/projects/#{$stateParams['project_id']}/retros/#{$scope.retro._id}"
 
       # Error
     , (response) ->
