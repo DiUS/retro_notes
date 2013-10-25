@@ -33,12 +33,11 @@ app.controller "ProjectsController", ($scope, $http, $location, $state, $statePa
     , (response) ->
       $state.transitionTo('default.projects')
 
-    Retro.query(
+    ProjectRetro.query(
       project_id: $stateParams['project_id']
 
       # Success
     , (response) ->
-      console.log(response)
       $scope.retros = response.retros
 
       # Error
