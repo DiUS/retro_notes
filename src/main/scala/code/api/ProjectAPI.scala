@@ -18,6 +18,10 @@ object ProjectAPI extends RestHelper with Loggable {
   serve {
     case "project" :: Nil JsonGet _ => Project.findAll() : JValue
     case "project" :: Project(project) :: Nil JsonGet _ => project: JValue
+    case "project" :: Project(project) :: Nil JsonDelete _ => {
+      Project.delete_!(project)
+      JNull
+    }
     case "project" :: Project(project) :: Nil JsonPut json -> _ => project.updateFromJson(json).map { p => p.saveMe(): JValue }
     case "project" :: Nil JsonPost json -> _ => Project.createFromJson(json).map { p => p.saveMe(): JValue }
   }
