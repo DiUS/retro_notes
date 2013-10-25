@@ -19,12 +19,13 @@ object Retro extends Retro with LongKeyedMetaMapper[Retro] {
     }
   }
 
-  implicit def toJson(item: Retro): JValue = Extraction.decompose(RetroType(
-    item.id.get,
-    item.title.get
-  ))
+  implicit def toJson(item: Retro): JValue = {
+    val refs = RetroReflection.findAll(By(RetroReflection.retro, item.id.get)).map(_.toReflectionType)
+    val acts = Action.findAll(By(Action.retro, item.id.get)).map(_.toActionType)
+    Extraction.decompose(RetroType(item.id.get, item.title.get, refs, acts))
+  }
   implicit def toJson(items: List[Retro]): JValue = {
-    val titles = items.map((p:Retro) => RetroType(p.id.get, p.title.get))
+    val titles = items.map((p:Retro) => RetroBase(p.id.get, p.title.get))
     Extraction.decompose(titles)
   }
 
@@ -52,5 +53,6 @@ class Retro extends LongKeyedMapper[Retro] with IdPK with OneToMany[Long, Retro]
   }
 }
 
-case class RetroType(id: Long, title: String)
+case class RetroBase(id: Long, title: String)
+case class RetroType(id: Long, title: String, reflections: List[ReflectionType], actions: List[ActionType])
 case class RetroTitle(title: String)

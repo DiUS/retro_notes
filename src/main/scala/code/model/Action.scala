@@ -16,4 +16,9 @@ class Action extends LongKeyedMapper[Action] with IdPK {
 
   object content extends MappedText(this)
 
+  def toActionType = ActionType(id.get, content.get)
+
 }
+
+case class ActionContent(content: String)
+case class ActionType(id: Long, content: String)

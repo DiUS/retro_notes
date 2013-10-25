@@ -17,4 +17,10 @@ class RetroReflection extends LongKeyedMapper[RetroReflection] with IdPK with On
   object title extends MappedString(this, 256)
 
   object retroResponses extends MappedOneToMany(RetroResponse, RetroResponse.retroReflection, OrderBy(RetroResponse.id, Ascending))
+
+  def toReflectionType = ReflectionType(id.get, title.get)
 }
+
+case class ReflectionTitle(title: String)
+case class ReflectionType(id: Long, title: String)
+case class ReflectionTypeWithResponses(id: Long, title: String, responses: List[ResponseType])

@@ -17,3 +17,6 @@ class RetroResponse extends LongKeyedMapper[RetroResponse] with IdPK {
   object content extends MappedText(this)
 
 }
+
+case class ResponseContent(content: String)
+case class ResponseType(id: Long, content: String)
