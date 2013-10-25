@@ -1,20 +1,20 @@
-class Api::RetroController < Api::BaseController
+class Api::RetrosController < Api::BaseController
   skip_authorization_check
 
   def index
     respond_to do |format|
-      format.json { render_for_api :default, json: RetroSession.all, root: :retros }
+      format.json { render_for_api :default, json: Retro.all, root: :retros }
     end
   end
  
   def show
     respond_to do |format|
-      format.json { render_for_api :default, json: RetroSession.find(params[:id])}
+      format.json { render_for_api :default, json: Retro.find(params[:id])}
     end
   end
  
   def create
-    retro = RetroSession.new(params[:retro])
+    retro = Retro.new(params[:retro])
     project = Project.find(params[:project_id])
 
     if project.retros << retro
@@ -23,12 +23,12 @@ class Api::RetroController < Api::BaseController
   end
  
   def update
-    retro = RetroSession.find(params[:id])
+    retro = Retro.find(params[:id])
     respond_with :api, retro.update_attributes(params[:retro])
   end
  
   def destroy
-    respond_with :api, RetroSession.destroy(params[:id])
+    respond_with :api, Retro.destroy(params[:id])
   end
 end
 

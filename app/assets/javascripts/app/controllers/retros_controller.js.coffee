@@ -23,7 +23,7 @@ app.controller "RetrosController", ($scope, $http, $location, $state, $statePara
     , (response) ->
       console.log 'error'
 
-    RetroResponse.query(
+    Retro.query(
       project_id: $stateParams['project_id']
 
       # Success
@@ -88,7 +88,8 @@ app.controller "RetrosController", ($scope, $http, $location, $state, $statePara
 
       # Success
     , (retro) ->
-      $location.path "/projects/#{$stateParams['project_id']}/retro/#{retro._id}"
+      console.log('here')
+      $location.path "/projects/#{$stateParams['project_id']}/retros/#{retro._id}"
 
       # Error
     , (response) ->
