@@ -5,4 +5,7 @@ app.factory "Action", ($resource, API_PREFIX) ->
     query:
       method: 'GET',
       isArray: false
+
+    update:
+      method: "PUT"
   )

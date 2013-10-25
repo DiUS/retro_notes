@@ -1,4 +1,4 @@
-app.controller "RetrosController", ($scope, $http, $location, $state, $stateParams, $timeout,Page, Project, Retro, RetroResponse) ->
+app.controller "RetrosController", ($scope, $http, $location, $state, $stateParams, $timeout,Page, Project, Retro, RetroResponse, Action) ->
   # =========================================================================
   # Initialize
   # =========================================================================
@@ -63,6 +63,12 @@ app.controller "RetrosController", ($scope, $http, $location, $state, $statePara
       # Error
     , (response) ->
     )
+
+    $scope.resolve_action = (retro_action) ->
+      Action.update(retro_action,
+        action_id: retro_action._id,
+        retro_action: retro_action
+      )
 
     # Poll for changes
     (tick = ->
