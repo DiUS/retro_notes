@@ -15,7 +15,7 @@ app.config ($stateProvider, $urlRouterProvider) ->
       views:
         "":
           controller: "ApplicationController"
-          templateUrl: "/assets/layouts/default.html.erb"
+          templateUrl: "/assets/layouts/default.html"
         "form":
           template: "Hello test"
 
@@ -25,21 +25,21 @@ app.config ($stateProvider, $urlRouterProvider) ->
       views:
         "":
           controller: "ProjectsController"
-          templateUrl: "/assets/projects/index.html.erb"
+          templateUrl: "/assets/projects/index.html"
 
     .state "default.projects.new",
       url: "/new"
       views:
         "@default":
           controller: "ProjectsController"
-          templateUrl: "/assets/projects/new.html.erb"
+          templateUrl: "/assets/projects/new.html"
 
     .state "default.projects.show",
       url: "/:project_id"
       views:
         "@default":
           controller: "ProjectsController"
-          templateUrl: "/assets/projects/show.html.erb"
+          templateUrl: "/assets/projects/show.html"
 
     # TBA
     # .state "default.projects.edit",
@@ -47,7 +47,7 @@ app.config ($stateProvider, $urlRouterProvider) ->
     #   views:
     #     "@default":
     #       controller: "ProjectsController"
-    #       templateUrl: "/assets/projects/edit.html.erb"
+    #       templateUrl: "/assets/projects/edit.html"
 
 
     # Project Feedback Sessions
@@ -60,23 +60,23 @@ app.config ($stateProvider, $urlRouterProvider) ->
       views:
         "@default":
           controller: "ProjectFeedbackSessionsController"
-          templateUrl: "/assets/feedback_sessions/new.html.erb"
+          templateUrl: "/assets/feedback_sessions/new.html"
 
     # .state "default.projects.show.feedback_sessions.show",
     #   url: "/:feedback_session_id"
     #   views:
     #     "@default":
     #       controller: "ProjectFeedbackSessionsController"
-    #       templateUrl: "/assets/feedback_sessions/show.html.erb"
+    #       templateUrl: "/assets/feedback_sessions/show.html"
 
     .state "default.projects.show.feedback_sessions.show",
       url: "/:feedback_session_id"
       views:
         "@default":
           controller: "ProjectFeedbackSessionsController"
-          templateUrl: "/assets/feedback_sessions/show.html.erb"
+          templateUrl: "/assets/feedback_sessions/show.html"
         # "form@default.projects.show.feedback_sessions.show":
-        #   templateUrl: "/assets/feedback_sessions/_new_response_form.html.erb"
+        #   templateUrl: "/assets/feedback_sessions/_new_response_form.html"
 
     .state "default.projects.show.feedback_sessions.show.response",
       url: '/response'
@@ -86,9 +86,9 @@ app.config ($stateProvider, $urlRouterProvider) ->
       views:
         # "@default":
         #   controller: "ProjectFeedbackSessionsController"
-        #   templateUrl: "/assets/feedback_sessions/show.html.erb"
+        #   templateUrl: "/assets/feedback_sessions/show.html"
         "form@default.projects.show.feedback_sessions.show":
-          templateUrl: "/assets/feedback_sessions/_new_response_form.html.erb"
+          templateUrl: "/assets/feedback_sessions/_new_response_form.html"
           controller: "ResponsesController"
 
 

@@ -9,8 +9,8 @@
 
 
 app.factory 'Page', ->
-  title = 'Teamscore'
-  appended = ' | Teamscore'
+  title = 'iRetro'
+  appended = ' | iRetro'
   title: -> title
   setTitle: (newTitle) ->
     document.title =  newTitle + appended

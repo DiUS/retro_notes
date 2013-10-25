@@ -1,6 +1,6 @@
 module LayoutHelper
   def title
-    base_title = 'Teamscore'
+    base_title = 'iRetro'
     if @title.nil?
       base_title
     else
