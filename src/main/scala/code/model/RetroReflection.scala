@@ -8,7 +8,7 @@ object RetroReflection extends RetroReflection with LongKeyedMetaMapper[RetroRef
 
 }
 
-class RetroReflection extends LongKeyedMapper[RetroReflection] with IdPK {
+class RetroReflection extends LongKeyedMapper[RetroReflection] with IdPK with OneToMany[Long, RetroReflection] {
 
   def getSingleton = RetroReflection
 
@@ -16,4 +16,5 @@ class RetroReflection extends LongKeyedMapper[RetroReflection] with IdPK {
 
   object title extends MappedString(this, 256)
 
+  object retroResponses extends MappedOneToMany(RetroResponse, RetroResponse.retroReflection, OrderBy(RetroResponse.id, Ascending))
 }
