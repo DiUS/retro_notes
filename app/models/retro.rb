@@ -7,7 +7,7 @@ class Retro
 
   belongs_to :project
   has_many :retro_reflections
-  # has_many :sentiment_quiz_responses
+  has_many :actions
 
   field :title, type: String
   validates :title,
@@ -18,5 +18,6 @@ class Retro
     template.add :_id
     template.add :title
     template.add :retro_reflections
+    template.add :actions
   end
 end

@@ -84,11 +84,17 @@ app.config ($stateProvider, $urlRouterProvider) ->
     .state "default.projects.show.retros.show.response.new",
       url: "/new"
       views:
-        # "@default":
-        #   controller: "RetroController"
-        #   templateUrl: "/assets/retros/show.html"
-        "form@default.projects.show.retros.show":
+        "response_form@default.projects.show.retros.show":
           templateUrl: "/assets/retros/_new_response_form.html"
           controller: "ResponsesController"
+    .state "default.projects.show.retros.show.action",
+      url: '/action'
+      abstract: true
+    .state "default.projects.show.retros.show.action.new",
+      url: "/new"
+      views:
+        "action_form@default.projects.show.retros.show":
+          templateUrl: "/assets/retros/_new_action_form.html"
+          controller: "ActionsController"
 
 

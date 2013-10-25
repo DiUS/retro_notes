@@ -11,6 +11,7 @@ LfdBootstrap::Application.routes.draw do
     end
 
     resources :retros
+    resources :actions
 
     resources :projects do
       match '/retros' => 'project_retros#index'

@@ -10,5 +10,14 @@
 </section>
 
 <a href="/projects/{{project._id}}/retros/{{retro._id}}/response/new" class="button">Add thought</a>
+<div ui-view="response_form"></div>
 
-<div ui-view="form"></div>
+
+
+
+    <h1>Actions</h1>
+    <ul>
+        <li ng-repeat="retro_action in retro.actions" ng-bind="retro_action.content"></li>
+    </ul>
+<a href="/projects/{{project._id}}/retros/{{retro._id}}/action/new" class="button">Add Action</a>
+<div ui-view="action_form"></div>
