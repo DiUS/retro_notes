@@ -6,10 +6,6 @@ app.controller "ProjectsController", ($scope, $http, $location, $state, $statePa
   $scope.projects = {}
   $scope.project = {}
 
-  # =========================================================================
-  # Show
-  # =========================================================================
-
   if $state.current.name == 'default.projects'
     Project.query(
       {}
@@ -22,6 +18,9 @@ app.controller "ProjectsController", ($scope, $http, $location, $state, $statePa
     , (response) ->
     )
 
+  # =========================================================================
+  # Show
+  # =========================================================================
   if $state.current.name == 'default.projects.show'
     Project.get
       id: $stateParams['project_id']
@@ -32,7 +31,7 @@ app.controller "ProjectsController", ($scope, $http, $location, $state, $statePa
 
       # Error
     , (response) ->
-      console.log 'error'
+      $location.path("/projects")
 
     ProjectFeedbackSession.query(
       project_id: $stateParams['project_id']
