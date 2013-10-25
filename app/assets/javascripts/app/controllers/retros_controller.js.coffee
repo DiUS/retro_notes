@@ -39,7 +39,7 @@ app.controller "RetrosController", ($scope, $http, $location, $state, $statePara
   # =========================================================================
   # Show
   # =========================================================================
-  if $state.current.name.indexOf('default.projects.show.retro.show') > -1    
+  if $state.current.name.indexOf('default.projects.show.retros.show') > -1    
     Project.get
       id: $stateParams['project_id']
 
@@ -57,7 +57,6 @@ app.controller "RetrosController", ($scope, $http, $location, $state, $statePara
       # Success
     , (response) ->
       $scope.retro = response.retro
-      $scope.retro_copy = angular.copy($scope.retro)
       Page.setTitle($scope.retro.title)
 
 
