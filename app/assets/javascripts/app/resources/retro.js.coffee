@@ -8,7 +8,7 @@ app.factory "Retro", ($resource, API_PREFIX) ->
 
 app.factory "RetroService", ($rootScope, RetroSession) ->
   retro: {}
-  get: (feedback_session_id) ->
+  get: (retro_id) ->
     self = @
     Retro.get
       id: retro_id
