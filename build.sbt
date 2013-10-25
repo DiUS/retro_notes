@@ -17,7 +17,7 @@ port in container.Configuration := 8888
 
 unmanagedResourceDirectories in Test <+= (baseDirectory) { _ / "src/main/webapp" }
 
-scalacOptions ++= Seq("-deprecation", "-unchecked")
+scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature", "-language:implicitConversions")
 
 libraryDependencies ++= {
   val liftVersion = "2.6-M1"
