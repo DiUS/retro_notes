@@ -34,7 +34,7 @@ object Project extends Project with LongKeyedMetaMapper[Project] with Loggable {
   ))
   implicit def toJson(items: List[Project]): JValue = {
     val titles = items.map((p:Project) => {
-      val retros = Retro.findAll(By(Retro.project, this)).map(r => RetroType(r.id.get, r.title.get))
+      val retros = Retro.findAll(By(Retro.project, this)).map(r => RetroBase(r.id.get, r.title.get))
       ProjectWithRetros(p.id.get, p.title.get, retros)
     })
     Extraction.decompose(titles)
@@ -66,6 +66,6 @@ class Project extends LongKeyedMapper[Project] with IdPK with OneToMany[Long, Pr
   }
 }
 
-case class ProjectWithRetros(id: Long, title: String, retros: List[RetroType])
+case class ProjectWithRetros(id: Long, title: String, retros: List[RetroBase])
 case class ProjectType(id: Long, title: String)
 case class ProjectTitle(title: String)
