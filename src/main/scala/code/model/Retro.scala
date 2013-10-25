@@ -12,6 +12,8 @@ class Retro extends LongKeyedMapper[Retro] with IdPK {
 
   def getSingleton = Retro
 
+  object project extends MappedLongForeignKey(this, Project)
+
   object title extends MappedString(this, 256)
 
 }

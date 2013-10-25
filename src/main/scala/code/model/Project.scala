@@ -25,10 +25,12 @@ object Project extends Project with LongKeyedMetaMapper[Project] {
 
 }
 
-class Project extends LongKeyedMapper[Project] with IdPK {
+class Project extends LongKeyedMapper[Project] with IdPK with OneToMany[Long, Project] {
 
   def getSingleton = Project
 
   object title extends MappedString(this, 256)
+
+  object retros extends MappedOneToMany(Retro, Retro.project, OrderBy(Retro.id, Ascending))
 
 }
