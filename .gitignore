@@ -15,3 +15,6 @@ tmp/cache
 .idea
 .idea_modules
 *.iml
+
+# h2 database
+*.db
