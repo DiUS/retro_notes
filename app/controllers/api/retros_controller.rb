@@ -15,6 +15,12 @@ class Api::RetrosController < Api::BaseController
  
   def create
     retro = Retro.new(params[:retro])
+    retro.save
+    
+    params[:retro]['reflections'].to_s.split(",").each { |name|
+      retro.retro_reflections << RetroReflection.new(title: name)
+    }
+    
     project = Project.find(params[:project_id])
 
     if project.retros << retro
