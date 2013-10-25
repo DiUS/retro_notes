@@ -1,18 +1,17 @@
-(function() {
-  app.config(function($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise("/");
-    return $stateProvider.state("default", {
-      abstract: true,
-      views: {
-        "": {
-          controller: "ApplicationController",
-          templateUrl: "/assets/layouts/default.html"
-        },
-        "form": {
-          template: "Hello test"
-        }
+app.config(function ($stateProvider, $urlRouterProvider) {
+  $urlRouterProvider.otherwise("/");
+  return $stateProvider.state("default", {
+    abstract: true,
+    views: {
+      "": {
+        controller: "ApplicationController",
+        templateUrl: "/assets/layouts/default.html"
+      },
+      "form": {
+        template: "Hello test"
       }
-    }).state("default.projects", {
+    }
+  }).state("default.projects", {
       url: "/projects",
       views: {
         "": {
@@ -78,6 +77,4 @@
         }
       }
     });
-  });
-
-}).call(this);
+});

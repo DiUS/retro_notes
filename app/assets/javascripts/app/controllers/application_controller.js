@@ -1,6 +1,3 @@
-(function() {
-  app.controller("ApplicationController", function($scope, Page) {
-    return console.log('app controller');
-  });
-
-}).call(this);
+app.controller("ApplicationController", function ($scope, Page) {
+  return console.log('app controller');
+});

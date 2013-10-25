@@ -1,6 +1,3 @@
-(function() {
-  $(function() {
-    return $(document).foundation();
-  });
-
-}).call(this);
+$(function () {
+  return $(document).foundation();
+});

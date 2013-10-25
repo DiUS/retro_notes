@@ -1,4 +1,1 @@
-(function() {
-  app.constant("API_PREFIX", "/api");
-
-}).call(this);
+app.constant("API_PREFIX", "/api");
