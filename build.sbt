@@ -33,3 +33,12 @@ libraryDependencies ++= {
   )
 }
 
+seq(jsSettings : _*)
+
+(webappResources in Compile) <+= (resourceManaged in Compile)
+
+(compile in Compile) <<= compile in Compile dependsOn (JsKeys.js in Compile)
+
+(JsKeys.coffeeBare in (Compile)) := true
+
+(JsKeys.compilationLevel in (Compile, JsKeys.js)) := CompilationLevel.WHITESPACE_ONLY
