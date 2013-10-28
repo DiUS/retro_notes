@@ -1,0 +1,9 @@
+<form ng-submit="create(new_retro_response.retro_reflection_id)">
+  <select ng-model="new_retro_response.retro_reflection_id">
+    <option ng-repeat="retro_reflection in retro.retro_reflections" value="{{retro_reflection._id}}" ng-bind="retro_reflection.title"></option>
+  </select>
+  <textarea placeholder="something here" ng-model="new_retro_response.content"></textarea>
+  <input type="submit" value="Add"/>
+</form>
+
+<a href="/projects/{{project._id}}/feedback_sessions/{{feedback_session._id}}">close</a>

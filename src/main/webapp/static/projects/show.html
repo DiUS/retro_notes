@@ -1,0 +1,9 @@
+<h1 ng-bind="project.title"></h1>
+
+Sessions
+<span ng-repeat="retro in retros">
+  <a ng-href="/projects/{{project._id}}/retros/{{retro._id}}" ng-bind="retro.title"></a>
+  <br>
+</span>
+
+<a href="/projects/{{project._id}}/retros/new">Create new Retro</a>

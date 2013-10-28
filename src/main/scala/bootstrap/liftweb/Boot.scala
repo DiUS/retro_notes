@@ -50,7 +50,8 @@ class Boot {
 
     // Build SiteMap
     def sitemap = SiteMap(
-      Menu.i("Home") / "index" >> User.AddUserMenusAfter)
+      Menu.i("Home") / "index" >> User.AddUserMenusAfter,
+      Menu.i("Static") / "static" / ** >> Hidden)
 
     def sitemapMutators = User.sitemapMutator
 
@@ -83,5 +84,10 @@ class Boot {
 
     // Make a transaction span the whole HTTP request
     S.addAround(DB.buildLoanWrapper)
+
+    // Don't apply templates to static html
+    LiftRules.liftRequest.append{
+      case Req("static" :: _, "html", _) => false
+    }
   }
 }

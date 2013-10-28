@@ -41,4 +41,4 @@ seq(jsSettings : _*)
 
 (JsKeys.coffeeBare in (Compile)) := true
 
-(JsKeys.compilationLevel in (Compile, JsKeys.js)) := CompilationLevel.WHITESPACE_ONLY
+(JsKeys.compilationLevel in (Compile, JsKeys.js)) := CompilationLevel.SIMPLE_OPTIMIZATIONS

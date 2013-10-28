@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
-    <title>Home</title>
-  </head>
-  <body class="lift:content_id=main">
-    <div id="main" class="lift:surround?with=default;at=content">
-      <h2>Welcome to your project!</h2>
-    </div>
-  </body>
+<html ng-app="app">
+<head>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular-resource.min.js"></script>
+    <script src="/javascript/application.js"></script>
+</head>
+<body>
+<div ui-view></div>
+</body>
 </html>
-
