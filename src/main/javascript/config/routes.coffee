@@ -75,8 +75,6 @@ app.config ['$stateProvider', '$urlRouterProvider', ($stateProvider, $urlRouterP
         "@default":
           controller: "RetrosController"
           templateUrl: "/static/retros/show.html"
-        # "form@default.projects.show.retros.show":
-        #   templateUrl: "/static/retros/_new_response_form.html"
 
     .state "default.projects.show.retros.show.response",
       url: '/response'
@@ -85,7 +83,7 @@ app.config ['$stateProvider', '$urlRouterProvider', ($stateProvider, $urlRouterP
       url: "/new"
       views:
         "response_form@default.projects.show.retros.show":
-          templateUrl: "/static/retros/_new_response_form.html"
+          templateUrl: "/static/retros/new_response_form.html"
           controller: "ResponsesController"
     .state "default.projects.show.retros.show.action",
       url: '/action'
@@ -94,7 +92,7 @@ app.config ['$stateProvider', '$urlRouterProvider', ($stateProvider, $urlRouterP
       url: "/new"
       views:
         "action_form@default.projects.show.retros.show":
-          templateUrl: "/static/retros/_new_action_form.html"
+          templateUrl: "/static/retros/new_action_form.html"
           controller: "ActionsController"
 
 ]
