@@ -1,5 +1,5 @@
 app.factory "Action", ['$resource', 'API_PREFIX', ($resource, API_PREFIX) ->
-  $resource( API_PREFIX + "/action/:action_id",
+  $resource( API_PREFIX + "/actions/:action_id",
     action_id: "@action_id"
   ,
     query:
