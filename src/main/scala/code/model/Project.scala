@@ -11,7 +11,7 @@ object Project extends Project with LongKeyedMetaMapper[Project] with Loggable {
   private implicit val formats = net.liftweb.json.DefaultFormats
 
   def createFromJson(in: JsonAST.JValue): Option[Project] = {
-    in.extractOpt[ProjectTitle] match {
+    (in \ "project").extractOpt[ProjectTitle] match {
       case None => None
       case Some(projectTitle) => {
         Some(Project.create.title(projectTitle.title))
