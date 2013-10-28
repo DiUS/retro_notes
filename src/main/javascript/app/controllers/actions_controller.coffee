@@ -24,12 +24,12 @@ app.controller "ActionsController", ['$scope', '$http', '$location', '$state', '
       # i = 0
       # retro_action = action
       # while i < $scope.retro.retro_reflections.length
-      #   if  $scope.retro.retro_reflections[i]._id is retro_action.retro_reflection_id
+      #   if  $scope.retro.retro_reflections[i].id is retro_action.retro_reflection_id
       #     $scope.retro.retro_reflections[i].retro_actions.push retro_action
       #     break
       #   i++
 
-      $location.path "/projects/#{$stateParams['project_id']}/retros/#{$scope.retro._id}"
+      $location.path "/projects/#{$stateParams['project_id']}/retros/#{$scope.retro.id}"
 
       # Error
     , (action) ->

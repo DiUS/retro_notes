@@ -3,9 +3,9 @@
 <ul>
   <li ng-repeat="project in projects">
     Title: {{project.title}}
-    <a href="/projects/{{project._id}}">Show</a>
-    <a href="/projects/{{project._id}}/edit">Edit</a>
-    <a href="" ng-click="destroy(project._id)">Delete</a>
+    <a href="/projects/{{project.id}}">Show</a>
+    <a href="/projects/{{project.id}}/edit">Edit</a>
+    <a href="" ng-click="destroy(project.id)">Delete</a>
   </li>
 </ul>
 

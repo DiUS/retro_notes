@@ -24,12 +24,12 @@ app.controller "ResponsesController", ['$scope', '$http', '$location', '$state',
       i = 0
       retro_response = response
       while i < $scope.retro.retro_reflections.length
-        if  $scope.retro.retro_reflections[i]._id is retro_response.retro_reflection_id
+        if  $scope.retro.retro_reflections[i].id is retro_response.retro_reflection_id
           $scope.retro.retro_reflections[i].retro_responses.push retro_response
           break
         i++
 
-      $location.path "/projects/#{$stateParams['project_id']}/retros/#{$scope.retro._id}"
+      $location.path "/projects/#{$stateParams['project_id']}/retros/#{$scope.retro.id}"
 
       # Error
     , (response) ->

@@ -9,12 +9,12 @@
   </div>
 </section>
 
-<a href="/projects/{{project._id}}/retros/{{retro._id}}/response/new" class="button">Add thought</a>
+<a href="/projects/{{project.id}}/retros/{{retro.id}}/response/new" class="button">Add thought</a>
 <div ui-view="response_form"></div>
     <h1>Actions</h1>
     <ul>
         <li ng-repeat="retro_action in retro.actions">{{retro_action.content}}<input type="checkbox" ng-model="retro_action.resolved" ng-click="resolve_action(retro_action)"/></li>
 
     </ul>
-<a href="/projects/{{project._id}}/retros/{{retro._id}}/action/new" class="button">Add Action</a>
+<a href="/projects/{{project.id}}/retros/{{retro.id}}/action/new" class="button">Add Action</a>
 <div ui-view="action_form"></div>

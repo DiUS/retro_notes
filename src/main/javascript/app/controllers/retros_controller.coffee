@@ -66,7 +66,7 @@ app.controller "RetrosController", ['$scope', '$http', '$location', '$state', '$
 
     $scope.resolve_action = (retro_action) ->
       Action.update(retro_action,
-        action_id: retro_action._id,
+        action_id: retro_action.id,
         retro_action: retro_action
       )
 
@@ -94,7 +94,7 @@ app.controller "RetrosController", ['$scope', '$http', '$location', '$state', '$
       # Success
     , (retro) ->
       console.log('here')
-      $location.path "/projects/#{$stateParams['project_id']}/retros/#{retro._id}"
+      $location.path "/projects/#{$stateParams['project_id']}/retros/#{retro.id}"
 
       # Error
     , (response) ->
