@@ -88,7 +88,7 @@ app.controller "RetrosController", ['$scope', '$http', '$location', '$state', '$
   $scope.create = ->
     form_data = $scope.retro
     Retro.save(
-      project_id: $stateParams['project_id'],
+      project_id: Number($stateParams['project_id']),
       retro: form_data
 
       # Success
