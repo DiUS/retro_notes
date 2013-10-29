@@ -88,6 +88,7 @@ class Boot {
     // Don't apply templates to static html
     LiftRules.liftRequest.append{
       case Req("static" :: _, "html", _) => false
+      case Req("index" :: Nil, _, _) => false
     }
   }
 }
