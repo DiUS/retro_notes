@@ -14,6 +14,7 @@ import code.api._
 
 import code.model._
 import net.liftmodules.JQueryModule
+import net.liftweb.http.provider.HTTPParam
 
 
 /**
@@ -43,8 +44,19 @@ class Boot {
     LiftRules.addToPackages("code")
 
 
+    LiftRules.supplimentalHeaders = s => s.addHeaders(
+      List(HTTPParam("X-Lift-Version", LiftRules.liftVersion),
+        HTTPParam("Access-Control-Allow-Origin", "*"),
+        HTTPParam("Access-Control-Allow-Credentials", "true"),
+        HTTPParam("Access-Control-Allow-Methods", "GET, POST, PUT, OPTIONS"),
+        HTTPParam("Access-Control-Allow-Headers", "WWW-Authenticate,Keep-Alive,User-Agent,X-Requested-With,Cache-Control,Content-Type,X-CSRF-TOKEN")
+      ))
+
     // REST Api classes
     LiftRules.statelessDispatch.append(ProjectAPI)
+    LiftRules.statelessDispatch.append(RetroAPI)
+
+    LiftRules.enableContainerSessions = false
 
 
 
