@@ -4,15 +4,16 @@ import net.liftweb.mapper._
 import net.liftweb.json._
 import net.liftweb.common.Box
 import net.liftweb.util.Helpers
+import code.lib.model.JxMetaMapperHelp
 
-object Retro extends Retro with LongKeyedMetaMapper[Retro] with JxMetaHelp[Retro] {
+object Retro extends Retro with LongKeyedMetaMapper[Retro] with JxMetaMapperHelp[Retro] {
 
   override def dbTableName = "retro"
 
 
 }
 
-class Retro extends LongKeyedMapper[Retro] with IdPK with OneToMany[Long, Retro] with JxHelp[Retro] {
+class Retro extends LongKeyedMapper[Retro] with IdPK with OneToMany[Long, Retro] {
 
   def getSingleton = Retro
 

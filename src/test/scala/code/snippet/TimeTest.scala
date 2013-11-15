@@ -10,6 +10,7 @@ import lib._
 import org.specs2.mutable.Specification
 import org.specs2.specification.AroundExample
 import org.specs2.execute.AsResult
+import code.lib.inject.DependencyFactory
 
 
 object TimeTestSpecs extends Specification with AroundExample{

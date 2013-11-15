@@ -1,16 +1,19 @@
-package code.model
+package code.lib.model
 
 import net.liftweb.json._
 import scala.xml.{Text, Elem, Node}
 import net.liftweb.mapper._
-import net.liftweb.common.{Box}
+import net.liftweb.common.Box
 import net.liftweb.util.{BaseField, Helpers}
 import net.liftweb.json.JValue
 
-object JxHelp {
+object JxMapperHelp {
   implicit val formats = net.liftweb.json.DefaultFormats
 
   type Exported = Map[String, String]
+
+  private def toExported[A <: LongKeyedMapper[A]](a: A): Exported =
+    a.allFields.+:(a.primaryKeyField).map(f => (f.name, f.asHtml.text)).toMap
 
   private def toJSON(a: Exported): JValue = Extraction.decompose(a)
 
@@ -19,19 +22,19 @@ object JxHelp {
     Elem(null, name, scala.xml.Null, scala.xml.TopScope, true, values: _*)
   }
 
-  implicit def toJSON[A <: LongKeyedMapper[A] with JxHelp[A]](a: A): JValue =
-    toJSON(a.toExported)
+  implicit def toJSON[A <: LongKeyedMapper[A]](a: A): JValue =
+    toJSON(toExported(a))
 
-  implicit def toXML[A <: LongKeyedMapper[A] with JxHelp[A]](a: A): Node =
-    toXML(a.toExported, a.getClass.getSimpleName)
+  implicit def toXML[A <: LongKeyedMapper[A]](a: A): Node =
+    toXML(toExported(a), a.getClass.getSimpleName)
 
 }
 
-trait JxMetaHelp[A <: LongKeyedMapper[A]] { self: LongKeyedMetaMapper[A] =>
+trait JxMetaMapperHelp[A <: LongKeyedMapper[A]] { self: LongKeyedMetaMapper[A] =>
 
-  import JxHelp._
+  import JxMapperHelp._
 
-  lazy val nodeName = getClass.getSimpleName
+  lazy val nodeName = getClass.getSimpleName.toLowerCase
 
   /* CREATE */
   def create[O <: LongKeyedMapper[O]](owner: O, in: JValue): Box[A] = Helpers.tryo {
@@ -64,7 +67,7 @@ trait JxMetaHelp[A <: LongKeyedMapper[A]] { self: LongKeyedMetaMapper[A] =>
     }
   }
 
-  private[JxMetaHelp] val illegalApplyKeys = Set("id", "_id")
+  private[JxMetaMapperHelp] val illegalApplyKeys = Set("id", "_id")
   private def update(a: A, kv: Exported): A = {
     if (kv.keySet.find(k => illegalApplyKeys.contains(k) || fieldByName(k).isEmpty).nonEmpty)
       throw new IllegalArgumentException("Illegal API usage")
@@ -87,13 +90,4 @@ trait JxMetaHelp[A <: LongKeyedMapper[A]] { self: LongKeyedMetaMapper[A] =>
     val a: Option[A] = unapply(pk)
     delete_!(a.get)
   }
-}
-
-trait JxHelp[A <: LongKeyedMapper[A]] { self : LongKeyedMapper[A] =>
-
-  import JxHelp._
-
-  def toExported: Exported =
-    allFields.map(f => (f.name, f.asHtml.text)).toMap
-
 }

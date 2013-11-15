@@ -2,8 +2,9 @@ package code.model
 
 import net.liftweb.mapper._
 import net.liftweb.json._
+import code.lib.model.JxMetaMapperHelp
 
-object RetroReflection extends RetroReflection with LongKeyedMetaMapper[RetroReflection] with JxHelp[RetroReflection] {
+object RetroReflection extends RetroReflection with LongKeyedMetaMapper[RetroReflection] with JxMetaMapperHelp[RetroReflection] {
   override def dbTableName = "retro_reflection"
 
 }

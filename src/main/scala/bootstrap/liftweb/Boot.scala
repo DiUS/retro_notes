@@ -24,11 +24,11 @@ import net.liftweb.http.provider.HTTPParam
 class Boot {
   def boot {
     if (!DB.jndiJdbcConnAvailable_?) {
-      val vendor =
-	new StandardDBVendor(Props.get("db.driver") openOr "org.h2.Driver",
-			     Props.get("db.url") openOr
-			     "jdbc:h2:lift_proto.db;AUTO_SERVER=TRUE",
-			     Props.get("db.user"), Props.get("db.password"))
+      val vendor = new StandardDBVendor(
+        Props.get("db.driver") openOr "org.h2.Driver",
+			  Props.get("db.url") openOr "jdbc:h2:lift_proto.db;AUTO_SERVER=TRUE",
+			  Props.get("db.user"),
+        Props.get("db.password"))
 
       LiftRules.unloadHooks.append(vendor.closeAllConnections_! _)
 
@@ -43,6 +43,15 @@ class Boot {
     // where to search snippet
     LiftRules.addToPackages("code")
 
+    // REST Api classes
+    Seq(
+      ActionAPI,
+      ProjectAPI,
+      RetroAPI,
+      RetroReflectionAPI,
+      RetroResponseAPI
+    ).foreach(LiftRules.statelessDispatch.append(_))
+
 
     LiftRules.supplimentalHeaders = s => s.addHeaders(
       List(HTTPParam("X-Lift-Version", LiftRules.liftVersion),
@@ -51,13 +60,7 @@ class Boot {
         HTTPParam("Access-Control-Allow-Methods", "GET, POST, PUT, OPTIONS"),
         HTTPParam("Access-Control-Allow-Headers", "WWW-Authenticate,Keep-Alive,User-Agent,X-Requested-With,Cache-Control,Content-Type,X-CSRF-TOKEN")
       ))
-
-    // REST Api classes
-    LiftRules.statelessDispatch.append(ProjectAPI)
-    LiftRules.statelessDispatch.append(RetroAPI)
-
     LiftRules.enableContainerSessions = false
-
 
 
     // Build SiteMap
@@ -76,13 +79,9 @@ class Boot {
     JQueryModule.InitParam.JQuery=JQueryModule.JQuery172
     JQueryModule.init()
 
-    //Show the spinny image when an Ajax call starts
-    LiftRules.ajaxStart =
-      Full(() => LiftRules.jsArtifacts.show("ajax-loader").cmd)
-
-    // Make the spinny image go away when it ends
-    LiftRules.ajaxEnd =
-      Full(() => LiftRules.jsArtifacts.hide("ajax-loader").cmd)
+    //Show / hide the spinny image when an Ajax call starts / ends
+    LiftRules.ajaxStart = Full(() => LiftRules.jsArtifacts.show("ajax-loader").cmd)
+    LiftRules.ajaxEnd = Full(() => LiftRules.jsArtifacts.hide("ajax-loader").cmd)
 
     // Force the request to be UTF-8
     LiftRules.early.append(_.setCharacterEncoding("UTF-8"))
@@ -91,11 +90,10 @@ class Boot {
     LiftRules.loggedInTest = Full(() => User.loggedIn_?)
 
     // Use HTML5 for rendering
-    LiftRules.htmlProperties.default.set((r: Req) =>
-      new Html5Properties(r.userAgent))
+    LiftRules.htmlProperties.default.set((r: Req) => new Html5Properties(r.userAgent))
 
     // Make a transaction span the whole HTTP request
-    S.addAround(DB.buildLoanWrapper)
+    S.addAround(DB.buildLoanWrapper())
 
     // Don't apply templates to static html
     LiftRules.liftRequest.append{

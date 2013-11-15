@@ -1,8 +1,9 @@
 package code.model
 
 import net.liftweb.mapper._
+import code.lib.model.JxMetaMapperHelp
 
-object RetroResponse extends RetroResponse with LongKeyedMetaMapper[RetroResponse] with JxHelp[RetroResponse] {
+object RetroResponse extends RetroResponse with LongKeyedMetaMapper[RetroResponse] with JxMetaMapperHelp[RetroResponse] {
 
   override def dbTableName = "retro_response"
 
